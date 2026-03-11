@@ -1,5 +1,6 @@
 const express = require("express");
 const crypto = require("crypto");
+const path = require("path");
 
 const PORT = 3000;
 
@@ -31,18 +32,7 @@ console.log("Credential verified. Starting Gooble Wiki...");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send(`
-    <h1>Welcome to the Gooble Internal Wiki</h1>
-    <p>Recruiter Documentation</p>
-
-    <ul>
-      <li>Candidate Outreach Email Template</li>
-      <li>Interview Scheduling Guide</li>
-      <li>Submitting Candidate Feedback</li>
-      <li>Updating Your Address in the Employee Portal</li>
-      <li>Employee Referral Program Guide</li>
-    </ul>
-  `);
+  res.sendFile(path.join(__dirname, "public", "wiki.html"));
 });
 
 app.listen(PORT, () => {
